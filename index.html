@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Arlene portfolio showcasing web design, app design, and branding projects with modern UI/UX expertise." />
+    <title>Arlene Portfolio</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+        html,
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+
+        .gradient-1 {
+            background: linear-gradient(135deg,
+                    #7d2ae8 0%,
+                    #00c4cc 100%);
+        }
+
+        .gradient-2 {
+            background: linear-gradient(135deg,
+                    #1a1a1a 0%,
+                    #0e0e0e 100%);
+        }
+
+        .gradient-purple-blue {
+            background: linear-gradient(135deg,
+                    #7d2ae8 0%,
+                    #5b21b6 50%,
+                    #00c4cc 100%);
+        }
+
+        .gradient-accent {
+            background: linear-gradient(90deg,
+                    #ff6b9d 0%,
+                    #ffa500 50%,
+                    #00c4cc 100%);
+        }
+
+        .button-border-gradient {
+            background: linear-gradient(90deg,
+                    #7d2ae8 0%,
+                    #00c4cc 100%);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.25s ease-in-out;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid rgba(125, 42, 232, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(125, 42, 232, 0.3);
+        }
+
+        .project-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            background: linear-gradient(135deg, rgba(125, 42, 232, 0.9) 0%, rgba(0, 196, 204, 0.9) 100%);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .skill-card {
+            transition:
+                transform 0.3s ease-in-out,
+                background-color 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+            border: 1px solid rgba(125, 42, 232, 0.2);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(125, 42, 232, 0.3);
+            background: linear-gradient(135deg, rgba(125, 42, 232, 0.1) 0%, rgba(0, 196, 204, 0.1) 100%);
+        }
+
+        .stack-icon {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid rgba(125, 42, 232, 0.2);
+        }
+
+        .stack-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(125, 42, 232, 0.4);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    #7d2ae8 0%,
+                    #00c4cc 100%);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        .canva-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(125, 42, 232, 0.4);
+        }
+
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .accent-pink {
+            background: #ff6b9d;
+        }
+
+        .accent-orange {
+            background: #ffa500;
+        }
+
+        .accent-cyan {
+            background: #00c4cc;
+        }
+
+        .accent-purple {
+            background: #7d2ae8;
+        }
+
+        .accent-green {
+            background: #00d084;
+        }
+
+        .accent-yellow {
+            background: #ffd700;
+        }
+    </style>
+    <link rel="stylesheet" href="globals.css" />
+</head>
+
+<body class="font-sans antialiased">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-purple-900/30"
+        style="background: rgba(14, 14, 14, 0.8);">
+        <div class="max-w-7xl mx-auto px-8 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#home" class="text-2xl font-headline font-bold"
+                    style="background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arlene
+                    Ann S. Marasigan</a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="nav-link text-gray-100 active" style="font-weight: 500;">Home</a>
+                    <a href="#about" class="nav-link text-gray-100" style="font-weight: 500;">About</a>
+                    <a href="#portfolio" class="nav-link text-gray-100" style="font-weight: 500;">Portfolio</a>
+                    <a href="#experience" class="nav-link text-gray-100" style="font-weight: 500;">Experience</a>
+                    <a href="#stack" class="nav-link text-gray-100" style="font-weight: 500;">Stack</a>
+                    <a href="#contact" class="nav-link text-gray-100" style="font-weight: 500;">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-100 focus:outline-none p-2"
+                    style="transition: all 0.3s ease;" aria-label="Toggle mobile menu">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 rounded-lg"
+                style="background: rgba(26, 26, 26, 0.95); border: 1px solid rgba(125, 42, 232, 0.2);">
+                <div class="flex flex-col gap-4 px-6 py-4">
+                    <a href="#home" class="text-gray-100 py-3" style="font-weight: 500;">Home</a>
+                    <a href="#about" class="text-gray-100 py-3" style="font-weight: 500;">About</a>
+                    <a href="#portfolio" class="text-gray-100 py-3" style="font-weight: 500;">Portfolio</a>
+                    <a href="#experience" class="text-gray-100 py-3" style="font-weight: 500;">Experience</a>
+                    <a href="#stack" class="text-gray-100 py-3" style="font-weight: 500;">Stack</a>
+                    <a href="#contact" class="text-gray-100 py-3" style="font-weight: 500;">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 w-full h-full">
+            <video aria-label="hero background video" src="frontvid.mp4" poster="picfrontvid.png"
+                class="w-full h-full object-cover" autoplay="" loop="" muted="" playsinline=""></video>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 to-black/80"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-8 max-w-4xl mx-auto">
+            <h1 class="font-headline font-bold text-5xl md:text-7xl mb-6 text-white" style="line-height: 1.1;">
+                Hi, I'm <span
+                    style="background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arlene</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-4 text-gray-300" style="font-weight: 500;">
+                UI/UX Developer focused on creating practical and engaging interfaces
+            </p>
+            <p class="text-lg md:text-xl mb-12 text-gray-400 max-w-2xl mx-auto">
+                I design and develop user-centered interfaces for academic and personal projects.
+                My work focuses on clear layouts, consistent design systems, and smooth interactions that improve
+                usability and overall user experience.
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#portfolio"
+                    class="inline-block text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
+                    style="background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%); box-shadow: 0 4px 15px rgba(125, 42, 232, 0.4);"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(125, 42, 232, 0.6)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(125, 42, 232, 0.4)';">
+                    View My Work
+                </a>
+                <a href="cv.pdf" download="Arlene_Marasigan_CV.pdf"
+                    class="inline-block text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center gap-2"
+                    style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(125, 42, 232, 0.5); backdrop-filter: blur(10px);"
+                    onmouseover="this.style.background='rgba(125, 42, 232, 0.2)'; this.style.borderColor='#7d2ae8';"
+                    onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(125, 42, 232, 0.5)';">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download CV
+                </a>
+                <a href="#contact"
+                    class="inline-block text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
+                    style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(0, 196, 204, 0.5); backdrop-filter: blur(10px);"
+                    onmouseover="this.style.background='rgba(0, 196, 204, 0.2)'; this.style.borderColor='#00c4cc';"
+                    onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(0, 196, 204, 0.5)';">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-8" style="background: #0e0e0e;">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="mb-6">
+                        <span class="accent-dot accent-purple"></span>
+                        <span class="accent-dot accent-cyan"></span>
+                        <span class="accent-dot accent-pink"></span>
+                    </div>
+                    <h2 class="font-headline font-bold text-4xl md:text-5xl mb-8 text-white">
+                        About Me
+                    </h2>
+                    <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                        <strong style="color: #7d2ae8;">Arlene</strong> is a UI/UX developer and design student with a
+                        strong interest in creating clean and effective digital interfaces. She focuses on usability,
+                        accessibility, and consistency in every project.
+                    </p>
+                    <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                        <strong style="color: #00c4cc;">Arlene enjoys turning ideas into interactive designs</strong>
+                        that improve how people experience digital products. Her work reflects attention to detail,
+                        clear structure, and a balance between creativity and functionality.
+                    </p>
+                    <div class="flex gap-3 flex-wrap mt-8">
+                        <span class="px-4 py-2 rounded-full text-sm font-semibold"
+                            style="background: rgba(125, 42, 232, 0.2); color: #7d2ae8; border: 1px solid rgba(125, 42, 232, 0.3);">UI/UX
+                            Design</span>
+                        <span class="px-4 py-2 rounded-full text-sm font-semibold"
+                            style="background: rgba(0, 196, 204, 0.2); color: #00c4cc; border: 1px solid rgba(0, 196, 204, 0.3);">Product
+                            Design</span>
+                        <span class="px-4 py-2 rounded-full text-sm font-semibold"
+                            style="background: rgba(255, 107, 157, 0.2); color: #ff6b9d; border: 1px solid rgba(255, 107, 157, 0.3);">Branding</span>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 rounded-3xl blur-3xl opacity-30"
+                            style="background: linear-gradient(135deg, #7d2ae8 0%, #00c4cc 100%);"></div>
+                        <img src="profiledark.png" alt="designer avatar"
+                            class="rounded-3xl w-full max-w-md relative z-10"
+                            style="border: 2px solid rgba(125, 42, 232, 0.3);" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-32 px-8" style="background: #1a1a1a;">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="mb-4">
+                    <span class="accent-dot accent-pink"></span>
+                    <span class="accent-dot accent-orange"></span>
+                    <span class="accent-dot accent-cyan"></span>
+                </div>
+                <h2 class="font-headline font-bold text-4xl md:text-5xl mb-4 text-white">
+                    Featured Projects
+                </h2>
+                <p class="text-gray-400 text-lg">Explore my latest design work</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <article class="project-card rounded-2xl overflow-hidden cursor-pointer" style="background: #0e0e0e;">
+                    <div class="relative">
+                        <img src="https://c.animaapp.com/mh4o9xkplNevlh/img/ai_2.png" alt="app design mockup"
+                            class="w-full h-64 object-cover" loading="lazy" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white text-lg font-semibold px-6 py-3 rounded-full"
+                                style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">See Details
+                                →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="accent-dot accent-purple"></span>
+                            <span class="text-gray-400 text-sm font-medium">UI/UX Design</span>
+                        </div>
+                        <h3 class="font-headline font-semibold text-2xl mb-2 text-white">
+                            Mobile App Design
+                        </h3>
+                        <p class="text-gray-400">
+                            A comprehensive mobile application redesign focusing on user
+                            engagement and seamless navigation.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card rounded-2xl overflow-hidden cursor-pointer" style="background: #0e0e0e;">
+                    <div class="relative">
+                        <img src="https://c.animaapp.com/mh4o9xkplNevlh/img/ai_3.png" alt="dashboard interface"
+                            class="w-full h-64 object-cover" loading="lazy" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white text-lg font-semibold px-6 py-3 rounded-full"
+                                style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">See Details
+                                →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="accent-dot accent-cyan"></span>
+                            <span class="text-gray-400 text-sm font-medium">Product Design</span>
+                        </div>
+                        <h3 class="font-headline font-semibold text-2xl mb-2 text-white">
+                            Dashboard Interface
+                        </h3>
+                        <p class="text-gray-400">
+                            An intuitive analytics dashboard that transforms complex data
+                            into actionable insights.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card rounded-2xl overflow-hidden cursor-pointer" style="background: #0e0e0e;">
+                    <div class="relative">
+                        <img src="https://c.animaapp.com/mh4o9xkplNevlh/img/ai_4.png" alt="branding concept"
+                            class="w-full h-64 object-cover" loading="lazy" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <span class="text-white text-lg font-semibold px-6 py-3 rounded-full"
+                                style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">See Details
+                                →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="accent-dot accent-pink"></span>
+                            <span class="text-gray-400 text-sm font-medium">Branding</span>
+                        </div>
+                        <h3 class="font-headline font-semibold text-2xl mb-2 text-white">
+                            Brand Identity
+                        </h3>
+                        <p class="text-gray-400">
+                            Complete brand identity system including logo, color palette,
+                            and visual guidelines.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-32 px-8" style="background: #0e0e0e;">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="mb-4">
+                    <span class="accent-dot accent-green"></span>
+                    <span class="accent-dot accent-yellow"></span>
+                    <span class="accent-dot accent-purple"></span>
+                </div>
+                <h2 class="font-headline font-bold text-4xl md:text-5xl mb-4 text-white">
+                    Experience
+                </h2>
+                <p class="text-gray-400 text-lg">My professional journey</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Experience 1 -->
+                <article class="pl-8 relative" style="border-left: 3px solid #7d2ae8;">
+                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full"
+                        style="background: linear-gradient(135deg, #7d2ae8 0%, #00c4cc 100%); box-shadow: 0 0 15px rgba(125, 42, 232, 0.6);">
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-gray-400 text-sm font-medium">2023 — Present</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-2 text-white">
+                        Bachelor of Science in Information Technology
+                    </h3>
+                    <p class="mb-4" style="color: #7d2ae8; font-weight: 600;">Batangas State University The NEU.</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I’m currently studying IT and learning how to design and build websites. I work on school and
+                        personal projects that focus on creating clean layouts and improving user experience.
+                    </p>
+                </article>
+
+                <!-- Experience 2 -->
+                <article class="pl-8 relative" style="border-left: 3px solid #00c4cc;">
+                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full"
+                        style="background: linear-gradient(135deg, #00c4cc 0%, #7d2ae8 100%); box-shadow: 0 0 15px rgba(0, 196, 204, 0.6);">
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-gray-400 text-sm font-medium">2021 — 2023</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-2 text-white">
+                        Technical-Vocational-Livelihood/Information and Communication Technology
+                    </h3>
+                    <p class="mb-4" style="color: #00c4cc; font-weight: 600;">Anselmo A. Sandoval Memorial National High
+                        School.</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I learned the basics of web design and development. I created simple web pages, practiced using
+                        design tools, and worked with classmates on small projects.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-32 px-8" style="background: #1a1a1a;">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-headline font-bold text-4xl md:text-5xl mb-4 text-white">
+                    Expertise
+                </h2>
+                <p class="text-gray-400 text-lg">What I bring to the table</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #7d2ae8 0%, #5b21b6 100%);">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        Web Design
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Building responsive and accessible websites using clean layouts and structured code. Focused on
+                        usability and consistent visual design.
+                    </p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #00c4cc 0%, #0891b2 100%);">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        App Design
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Designing and prototyping mobile apps that prioritize user experience, smooth navigation, and
+                        clear interface flow.
+                    </p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #ff6b9d 0%, #ec4899 100%);">
+                        <span class="text-2xl">✨</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        Branding
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Creating simple yet consistent visual identities that communicate purpose and appeal to target
+                        audiences.
+                    </p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #ffa500 0%, #f59e0b 100%);">
+                        <span class="text-2xl">🔍</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        UI/UX Research
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Conducting usability testing and collecting user feedback to guide design improvements and
+                        validate concepts.
+                    </p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #00d084 0%, #10b981 100%);">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        Prototyping
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Developing interactive prototypes that visualize ideas and improve collaboration in the design
+                        process.
+                    </p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card p-8 rounded-2xl" style="background: #0e0e0e;">
+                    <div class="w-12 h-12 rounded-xl mb-4 flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #ffd700 0%, #eab308 100%);">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="font-headline font-semibold text-2xl mb-4 text-white">
+                        Design Systems
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Organizing reusable components and styles to maintain design consistency across pages and
+                        platforms.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Section -->
+    <section id="stack" class="py-32 px-8" style="background: #0e0e0e;">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-headline font-bold text-4xl md:text-5xl mb-4 text-white">
+                    Favourite Stack
+                </h2>
+                <p class="text-gray-400 text-lg">Tools I use daily</p>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl">
+                    <!-- Stack Item 1 -->
+                    <div class="stack-icon flex flex-col items-center justify-center p-6 rounded-2xl cursor-pointer"
+                        style="background: #0e0e0e;">
+                        <div class="w-16 h-16 rounded-xl mb-4 flex items-center justify-center"
+                            style="background: linear-gradient(135deg, #7d2ae8 0%, #5b21b6 100%);">
+                            <span class="text-white font-headline font-bold text-2xl">Fi</span>
+                        </div>
+                        <span class="text-gray-300 text-sm text-center font-medium">Figma</span>
+                    </div>
+
+                    <!-- Stack Item 2 -->
+                    <div class="stack-icon flex flex-col items-center justify-center p-6 rounded-2xl cursor-pointer"
+                        style="background: #0e0e0e;">
+                        <div class="w-16 h-16 rounded-xl mb-4 flex items-center justify-center"
+                            style="background: linear-gradient(135deg, #00c4cc 0%, #0891b2 100%);">
+                            <span class="text-white font-headline font-bold text-2xl">Fr</span>
+                        </div>
+                        <span class="text-gray-300 text-sm text-center font-medium">Framer</span>
+                    </div>
+
+                    <!-- Stack Item 3 -->
+                    <div class="stack-icon flex flex-col items-center justify-center p-6 rounded-2xl cursor-pointer"
+                        style="background: #0e0e0e;">
+                        <div class="w-16 h-16 rounded-xl mb-4 flex items-center justify-center"
+                            style="background: linear-gradient(135deg, #00d084 0%, #10b981 100%);">
+                            <span class="text-white font-headline font-bold text-2xl">Ps</span>
+                        </div>
+                        <span class="text-gray-300 text-sm text-center font-medium">Photoshop</span>
+                    </div>
+
+                    <!-- Stack Item 4 -->
+                    <div class="stack-icon flex flex-col items-center justify-center p-6 rounded-2xl cursor-pointer"
+                        style="background: #0e0e0e;">
+                        <div class="w-16 h-16 rounded-xl mb-4 flex items-center justify-center"
+                            style="background: linear-gradient(135deg, #62ebfd 0%, #5cf0d7 100%);">
+                            <span class="text-white font-headline font-bold text-2xl">Cv</span>
+                        </div>
+                        <span class="text-gray-300 text-sm text-center font-medium">Canva</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-8 relative overflow-hidden" style="background: #0e0e0e;">
+        <div class="absolute inset-0 opacity-5">
+            <video aria-label="contact background video" src="backvid.mp4" poster="picfrontvid.png"
+                class="w-full h-full object-cover" autoplay="" loop="" muted="" playsinline=""></video>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <div class="mb-4">
+                    <span class="accent-dot accent-purple"></span>
+                    <span class="accent-dot accent-cyan"></span>
+                    <span class="accent-dot accent-pink"></span>
+                </div>
+                <h2 class="font-headline font-bold text-4xl md:text-5xl mb-6 text-white">
+                    Let's Work Together
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Have a project in mind? I'd love to hear about it. Let's create
+                    something amazing together.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <!-- Contact Form -->
+                <div>
+                    <form id="contactForm" action="https://formspree.io/f/xvgvodjn" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2 font-medium">Name</label>
+                            <input type="text" id="name" name="name" required=""
+                                class="w-full px-4 py-3 rounded-xl text-white focus:outline-none transition-all"
+                                style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(125, 42, 232, 0.3);"
+                                onfocus="this.style.borderColor='#7d2ae8'; this.style.boxShadow='0 0 0 3px rgba(125, 42, 232, 0.1)';"
+                                onblur="this.style.borderColor='rgba(125, 42, 232, 0.3)'; this.style.boxShadow='none';" />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2 font-medium">Email</label>
+                            <input type="email" id="email" name="email" required=""
+                                class="w-full px-4 py-3 rounded-xl text-white focus:outline-none transition-all"
+                                style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(125, 42, 232, 0.3);"
+                                onfocus="this.style.borderColor='#7d2ae8'; this.style.boxShadow='0 0 0 3px rgba(125, 42, 232, 0.1)';"
+                                onblur="this.style.borderColor='rgba(125, 42, 232, 0.3)'; this.style.boxShadow='none';" />
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-300 mb-2 font-medium">Message</label>
+                            <textarea id="message" name="message" rows="5" required=""
+                                class="w-full px-4 py-3 rounded-xl text-white focus:outline-none resize-none transition-all"
+                                style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(125, 42, 232, 0.3);"
+                                onfocus="this.style.borderColor='#7d2ae8'; this.style.boxShadow='0 0 0 3px rgba(125, 42, 232, 0.1)';"
+                                onblur="this.style.borderColor='rgba(125, 42, 232, 0.3)'; this.style.boxShadow='none';"></textarea>
+                        </div>
+                        <div id="formStatus" class="hidden text-center py-2 rounded-lg"></div>
+                        <button type="submit" id="submitBtn"
+                            class="w-full text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
+                            style="background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%); box-shadow: 0 4px 15px rgba(125, 42, 232, 0.4);"
+                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(125, 42, 232, 0.6)';"
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(125, 42, 232, 0.4)';">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="flex flex-col justify-center">
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="font-headline font-semibold text-xl mb-3 text-white">
+                                Email
+                            </h3>
+                            <a href="mailto:arleneannmarasigan586@gmail.com"
+                                class="transition-colors text-gray-300 hover:text-white"
+                                style="background: linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">arleneannmarasigan586@gmail.com</a>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-semibold text-xl mb-3 text-white">
+                                Social
+                            </h3>
+                            <div class="flex gap-4">
+                                <a href="https://www.linkedin.com/in/arlene-ann-marasigan-46056b390/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all"
+                                    style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(125, 42, 232, 0.3);"
+                                    onmouseover="this.style.background='linear-gradient(135deg, #7d2ae8 0%, #5b21b6 100%)'; this.style.transform='translateY(-3px)';"
+                                    onmouseout="this.style.background='rgba(26, 26, 26, 0.8)'; this.style.transform='translateY(0)';"
+                                    aria-label="LinkedIn Profile">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                </a>
+                                <a href="https://www.instagram.com/_arlene_ann/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all"
+                                    style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(0, 196, 204, 0.3);"
+                                    onmouseover="this.style.background='linear-gradient(135deg, #00c4cc 0%, #0891b2 100%)'; this.style.transform='translateY(-3px)';"
+                                    onmouseout="this.style.background='rgba(26, 26, 26, 0.8)'; this.style.transform='translateY(0)';"
+                                    aria-label="Instagram Profile">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/Arlene-0929" target="_blank" rel="noopener noreferrer"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all"
+                                    style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(255, 107, 157, 0.3);"
+                                    onmouseover="this.style.background='linear-gradient(135deg, #ff6b9d 0%, #ec4899 100%)'; this.style.transform='translateY(-3px)';"
+                                    onmouseout="this.style.background='rgba(26, 26, 26, 0.8)'; this.style.transform='translateY(0)';"
+                                    aria-label="GitHub Profile">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </a>
+                                <a href="https://www.behance.net/yourprofile" target="_blank" rel="noopener noreferrer"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all"
+                                    style="background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(255, 165, 0, 0.3);"
+                                    onmouseover="this.style.background='linear-gradient(135deg, #ffa500 0%, #f59e0b 100%)'; this.style.transform='translateY(-3px)';"
+                                    onmouseout="this.style.background='rgba(26, 26, 26, 0.8)'; this.style.transform='translateY(0)';"
+                                    aria-label="Behance Profile">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-semibold text-xl mb-3 text-white">
+                                Location
+                            </h3>
+                            <p class="text-gray-300">Bagalangit, Mabini, Batangas, Philippines</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="rounded-2xl overflow-hidden h-96" style="border: 1px solid rgba(125, 42, 232, 0.2);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31008.447296054244!2d120.86593493104833!3d13.715063489452781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bdaa02836a0ebf%3A0xdf054887c2019d67!2sBagalangit%2C%20Mabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1761451619333!5m2!1sen!2sph"
+                    width="100%" height="100%" style="border: 0; filter: grayscale(100%) invert(90%) contrast(90%);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Bagalangit, Mabini, Batangas location map"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-8" style="background: #0e0e0e; border-top: 1px solid rgba(125, 42, 232, 0.2);">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="font-headline font-bold text-2xl mb-4 text-white">
+                        Portfolio
+                    </h3>
+                    <p class="text-gray-400">
+                        Creating meaningful digital experiences through thoughtful design.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-headline font-semibold text-lg mb-4 text-white">
+                        Quick Links
+                    </h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="#home" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">Home</a>
+                        <a href="#about" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">About</a>
+                        <a href="#portfolio" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">Portfolio</a>
+                        <a href="#experience" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">Experience</a>
+                        <a href="#stack" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">Stack</a>
+                        <a href="#contact" class="text-gray-400 transition-colors"
+                            onmouseover="this.style.background='linear-gradient(90deg, #7d2ae8 0%, #00c4cc 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent'; this.style.backgroundClip='text';"
+                            onmouseout="this.style.background='none'; this.style.webkitTextFillColor=''; this.style.color='rgb(156, 163, 175)';">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 text-center" style="border-top: 1px solid rgba(125, 42, 232, 0.2);">
+                <p class="text-gray-500">
+                    © 2025 Arlene Portfolio. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Active Navigation Link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Scroll Progress Bar
+        const scrollProgress = document.getElementById('scrollProgress');
+
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // Form Submission with Formspree
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.opacity = '0.7';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formStatus.classList.remove('hidden');
+                    formStatus.style.background = 'rgba(0, 208, 132, 0.2)';
+                    formStatus.style.color = '#00d084';
+                    formStatus.style.border = '1px solid rgba(0, 208, 132, 0.3)';
+                    formStatus.textContent = '✓ Thank you! Your message has been sent successfully.';
+                    contactForm.reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    // Error
+                    formStatus.classList.remove('hidden');
+                    formStatus.style.background = 'rgba(255, 107, 157, 0.2)';
+                    formStatus.style.color = '#ff6b9d';
+                    formStatus.style.border = '1px solid rgba(255, 107, 157, 0.3)';
+                    formStatus.textContent = '✗ Oops! There was a problem sending your message.';
+                }
+            } catch (error) {
+                // Network error
+                formStatus.classList.remove('hidden');
+                formStatus.style.background = 'rgba(255, 107, 157, 0.2)';
+                formStatus.style.color = '#ff6b9d';
+                formStatus.style.border = '1px solid rgba(255, 107, 157, 0.3)';
+                formStatus.textContent = '✗ Network error. Please try again later.';
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                submitBtn.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+
+</html>
